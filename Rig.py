@@ -8,13 +8,14 @@ This is my own work as defined by the University's Academic Misconduct Policy.
 """
 
 from Asset import asset
+import random
 
 class Rig:
     def __init__(self, name):
         self.__name = name
         self.__damage = 0
         self.__broken = False
-        self.__storage = [asset("Data Spike", "Used in battles"), asset("Data Spike", "Used in battles"), asset("Encrypted Drive", "Used for extraction", True)]
+        self.__storage = [asset("Data Spike", "Used in battles."), asset("Data Spike", "Used in battles."), asset("Removable Drive", "Found in rigs and used for extraction.")]
         self.__upgrade_level = 0
 
     def get_name(self):
@@ -43,6 +44,11 @@ class Rig:
             self.broken = True
             print(f"{self.__name} has been broken. It needs a repair.")
 
+    def generate_asset(self):
+        assets_list = [asset("CrytoToken", "Used to acquire or repair ship"), asset("Data Spike", "Used in battles."), asset("Removable Drive", "Found in rigs and used for extraction."), asset("Security Chip", "Used to encrypt or decrypt assets."), asset("Hardware Patch", "Used to upgrade rigs.")]
+        new_asset = random.choice(assets_list)
+        self.__storage.append(new_asset)
+        print(f"{self.__name} has generated a new asset {new_asset}.")
 
 # r1 = Rig("Rig test")
 # r1.repair()
@@ -53,3 +59,7 @@ class Rig:
 # r1.take_hit()
 # r1.repair()
 # r1.take_hit()
+# r1.generate_asset()
+# r1.generate_asset()
+# for item in r1.get_storage():
+#     print(item)
