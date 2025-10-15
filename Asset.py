@@ -18,3 +18,17 @@ class asset:
 
     def get_description(self):
         return self.__description
+
+    def encrypt(self):
+        if self.__encrypted == False:
+            self.__encrypted = True
+            print(f"{self.__name} is encrypted.")
+        else:
+            print(f"{self.__name} is already encrypted.")
+
+    def decrypt(self):
+        if self.__encrypted == True:
+            self.__encrypted = False
+            print(f"{self.__name} is decrypted.")
+        else:
+            print(f"{self.__name} is already decrypted.")
