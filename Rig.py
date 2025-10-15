@@ -16,3 +16,9 @@ class Rig:
         self.__broken = False
         self.__storage = [asset("Data Spike", "Used in battles"), asset("Data Spike", "Used in battles"), asset("Encrypted Drive", "Used for extraction", True)]
         self.__upgrade_level = 0
+
+    def get_name(self):
+        return self.__name
+
+    def get_storage(self):
+        return self.__storage
