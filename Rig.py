@@ -34,3 +34,22 @@ class Rig:
     def upgrade(self):
         self.__upgrade_level = self.__upgrade_level + 1
         print(f"{self.__name} has been upgraded to {self.__upgrade_level} level")
+
+    def take_hit(self):
+        self.__damage = self.__damage + 1
+        print(f"{self.__name} has taken a hit. Current damage: {self.__damage}")
+
+        if self.__damage >= 2 + self.__upgrade_level:
+            self.broken = True
+            print(f"{self.__name} has been broken. It needs a repair.")
+
+
+# r1 = Rig("Rig test")
+# r1.repair()
+# r1.upgrade()
+# r1.take_hit()
+# r1.take_hit()
+# r1.take_hit()
+# r1.take_hit()
+# r1.repair()
+# r1.take_hit()
