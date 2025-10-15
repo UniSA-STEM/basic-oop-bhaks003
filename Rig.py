@@ -14,5 +14,5 @@ class Rig:
         self.__name = name
         self.__damage = 0
         self.__broken = False
-        self.__upgrade_level = 0
         self.__storage = [asset("Data Spike", "Used in battles"), asset("Data Spike", "Used in battles"), asset("Encrypted Drive", "Used for extraction", True)]
+        self.__upgrade_level = 0
