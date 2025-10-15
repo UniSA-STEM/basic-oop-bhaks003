@@ -22,3 +22,11 @@ class Rig:
 
     def get_storage(self):
         return self.__storage
+
+    def repair(self):
+        if self.__damage > 0 or self.__broken:
+            self.__damage = 0
+            self.__broken = False
+            print(f"{self.__name} has been repaired to pristine condition")
+        else:
+            print(f"{self.__name} is already in pristine condition doesn't need to be repaired")
