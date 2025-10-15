@@ -30,3 +30,7 @@ class Rig:
             print(f"{self.__name} has been repaired to pristine condition")
         else:
             print(f"{self.__name} is already in pristine condition doesn't need to be repaired")
+
+    def upgrade(self):
+        self.__upgrade_level = self.__upgrade_level + 1
+        print(f"{self.__name} has been upgraded to {self.__upgrade_level} level")
