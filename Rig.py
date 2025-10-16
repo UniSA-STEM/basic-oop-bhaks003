@@ -71,40 +71,48 @@ class Rig:
 
     def get_condition(self):
         if self.__broken:
-            print(f"Broken  (Level {self.__upgrade_level})")
+            return f"Broken  (Level {self.__upgrade_level})"
         else:
-            print(f"Pristine (Level {self.__upgrade_level})")
+            return f"Pristine (Level {self.__upgrade_level})"
+
+    def __str__(self):
+        asset_name = []
+        for asset in self.__storage:
+            asset_name.append(asset.get_name())
+        return f"Rig: {self.__name} | Condition: {self.get_condition()} | Asset: {asset_name}"
+
 
 
 # r1 = Rig("Rig test")
-# a1 = asset("Security Chip", "Used to encrypt or decrypt assets", True)
-# a2 = asset("Hardware Patch", "Used to upgrade rigs")
-# r1.repair()
-# r1.upgrade()
-# r1.take_hit()
-# r1.take_hit()
-# r1.take_hit()
-# r1.take_hit()
-# r1.repair()
-# r1.take_hit()
-# r1.generate_asset()
-# r1.generate_asset()
-# for item in r1.get_storage():
-#     print(item)
-# print(80*"#")
-# r1.store_asset(a1)
-# r1.store_asset(a2)
-# for item in r1.get_storage():
-#     print(item)
-# print(80*"#")
-# r1.release_asset(a1)
-# r1.release_asset(a2)
-# for item in r1.get_storage():
-#     print(item)
-# r1.get_condition()
-# r1.take_hit()
-# r1.take_hit()
-# r1.get_condition()
-# r1.take_hit()
-# r1.repair()
-# r1.get_condition()
+# # a1 = asset("Security Chip", "Used to encrypt or decrypt assets", True)
+# # a2 = asset("Hardware Patch", "Used to upgrade rigs")
+# # r1.repair()
+# # r1.upgrade()
+# # r1.take_hit()
+# # r1.take_hit()
+# # r1.take_hit()
+# # r1.take_hit()
+# # r1.repair()
+# # r1.take_hit()
+# # r1.generate_asset()
+# # r1.generate_asset()
+# # for item in r1.get_storage():
+# #     print(item)
+# # print(80*"#")
+# # r1.store_asset(a1)
+# # r1.store_asset(a2)
+# # for item in r1.get_storage():
+# #     print(item)
+# # print(80*"#")
+# # r1.release_asset(a1)
+# # r1.release_asset(a2)
+# # for item in r1.get_storage():
+# #     print(item)
+# # r1.get_condition()
+# # r1.take_hit()
+# # r1.take_hit()
+# # r1.get_condition()
+# # r1.take_hit()
+# # r1.repair()
+# # r1.get_condition()
+# print(r1)
