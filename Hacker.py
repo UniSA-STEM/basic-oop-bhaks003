@@ -65,6 +65,34 @@ class Hacker:
         if not self.is_exposed():
             print(f"{self.__name} is no longer exposed")
 
+    def launch_data_spike(self, target_rig):
+        # this one will block if the hacker is exposed too much by trace level
+        if self.is_exposed():
+            print(f"{self.__name} is exposed and cannot launch attacks right now.")
+            return
+
+        # this one will check that if a hacker has a rig in order to launch data spike or not
+        if self.__rig == False:
+            print(f"{self.__name} does not have a rig to launch data spike.")
+
+        # looking for a data spike in target's rig storage
+        spike = False
+        storage = self.__rig.get_storage()
+        for item in storage:
+            if item.get_name() == "Data Spike":
+                spike = item
+
+        if spike == False:
+            print(f"{self.__name} does not have a data spike.")
+            return
+
+        # using the data spike and attacking
+        storage.remove(spike)
+        target_rig.take_hit()
+        self.add_trace(1)
+        print(f"{self.__name} launched a data spike at {target_rig.get_name()}")
+
+
     def __str__(self):
         invetory_item = []
         for items in self.__inventory:
