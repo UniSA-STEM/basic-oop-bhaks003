@@ -20,6 +20,10 @@ class Hacker:
     def get_trace_level(self):
         return self.__trace_level
 
+    def is_exposed(self):
+        if self.__trace_level > 6:
+            return True
+        return False
 
     def acquire_rig(self, rig_name):
         has_asset = False
