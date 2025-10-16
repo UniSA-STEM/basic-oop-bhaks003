@@ -137,6 +137,15 @@ class Hacker:
 
         print(f"{self.__name} extracted {moved}  decrypted assets from {target_rig.get_name()}")
 
+    def has_security_chip(self):
+        for item in self.__inventory:
+            if item.get_name() == "Security Chip" and item.get_encrypted() == False:
+                return True
+            if self.__rig != False:
+                for item in self.rig.get_storage():
+                    if item.get_name() == "Security Chip" and item.get_encrypted() == False:
+                        return True
+            return False
 
     def __str__(self):
         invetory_item = []
@@ -166,4 +175,3 @@ class Hacker:
 # print(h1)
 # h1.extract_data_spike(t1)
 # print(h1)
-
