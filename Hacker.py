@@ -15,6 +15,11 @@ class Hacker:
         self.__name = name
         self.__inventory  = [asset("CryptoToken", "Used to acquire or repair rigs.")]
         self.__rig = False
+        self.__trace_level = 0
+
+    def get_trace_level(self):
+        return self.__trace_level
+
 
     def acquire_rig(self, rig_name):
         has_asset = False
