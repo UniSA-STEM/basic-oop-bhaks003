@@ -33,6 +33,9 @@ class Rig:
     def get_storage(self):
         return self.__storage
 
+    def is_broken(self):
+        return self.__broken
+
     """This method repair the rig and counters work on the upgrade level if it is level 0 it has capacity to withstand 2 hits and 
     after  that it will display repair message. 
     While level 1 ship can take 3 hit and so it goes on based on level"""
