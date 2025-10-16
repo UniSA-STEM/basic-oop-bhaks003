@@ -57,6 +57,19 @@ class Rig:
             self.__storage.append(asset_name)
             print(f"{asset_name} is stored in {self.__name}")
 
+
+    def release_asset(self, asset_name):
+        for asset in self.__storage:
+            if asset.get_name()  ==  asset_name.get_name():
+                if asset.get_encrypted():
+                    print(f"{asset.name} is encrypted. you to decrypt in order to transfer it.")
+                else:
+                    self.__storage.remove(asset)
+                    print(f"Releasing {asset.get_name()}. from {self.__name}")
+                return
+        print(f"{asset_name} is not in storage of  {self.__name}.")
+
+
 r1 = Rig("Rig test")
 a1 = asset("Security Chip", "Used to encrypt or decrypt assets", True)
 a2 = asset("Hardware Patch", "Used to upgrade rigs")
@@ -75,5 +88,10 @@ for item in r1.get_storage():
 print(80*"#")
 r1.store_asset(a1)
 r1.store_asset(a2)
+for item in r1.get_storage():
+    print(item)
+print(80*"#")
+r1.release_asset(a1)
+r1.release_asset(a2)
 for item in r1.get_storage():
     print(item)
