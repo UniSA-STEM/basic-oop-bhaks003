@@ -25,6 +25,9 @@ class asset:
     def get_description(self):
         return self.__description
 
+    def get_encrypted(self):
+        return self.__encrypted
+
     # this method encrypts the asset based on expression
     def encrypt(self):
         if self.__encrypted == False:
