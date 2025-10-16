@@ -65,6 +65,12 @@ class Hacker:
         if not self.is_exposed():
             print(f"{self.__name} is no longer exposed")
 
+    """
+    launch_data_spike method attacks the target rig but at first it will self check whether it is exposed by trace_level or not, 
+    then will check it was a rig 
+    and after that it will search for a data spike in the storage if it is found it will launch at target_rig 
+    in terms of leasving damage the target will take_hit and a add trace_level on own and will remove the spike from storage
+    """
     def launch_data_spike(self, target_rig):
         # this one will block if the hacker is exposed too much by trace level
         if self.is_exposed():
@@ -92,6 +98,45 @@ class Hacker:
         self.add_trace(1)
         print(f"{self.__name} launched a data spike at {target_rig.get_name()}")
 
+    """
+    this extraction method uses logic if rig is broken it will move further, attacker must have rig, 
+    it should be completly broken and also should contain removable drive 
+    after drive is found then only it will transfer the asset to inventory
+    """
+    def extract_data_spike(self, target_rig):
+        if self.__rig == False:
+            print(f"{self.__name} does not have a rig to extract assets.")
+            return
+
+        # determing if the target rig is broken or not
+        if target_rig.is_broken() == False:
+            print(f"{self.__name} is not broken cannot extract assets.")
+            return
+
+        attacker_storage = self.__rig.get_storage()
+
+        # finding removable drive in attackers storage
+        drive = False
+        for drive in attacker_storage:
+            if drive.get_name() == "Removable Drive":
+                drive = drive
+
+        if drive == False:
+            print(f"{self.__name} does not have a drive to extract assets.")
+            return
+
+        # taking the drive away from target
+        attacker_storage.remove(drive)
+
+        moved = 0 #moving the decrypted assest from the target's storage
+        for item in list(target_rig.get_storage()):
+            if item.get_encrypted() == False:
+                self.__inventory.append(item)
+                target_rig.get_storage().remove(item)
+                moved += 1
+
+        print(f"{self.__name} extracted {moved}  decrypted assets from {target_rig.get_name()}")
+
 
     def __str__(self):
         invetory_item = []
@@ -106,10 +151,18 @@ class Hacker:
 
 
 # h1 = Hacker("TestHacker")
+# t1 = Rig("Target 1")
 # print(h1)
 # h1.add_trace(2)
 # h1.add_trace(5)
 # print(h1)
 # h1.reduce_trace(4)
 # h1.reduce_trace(22)
+# print(h1)
+# h1.acquire_rig("NoRigggg")
+# print(h1)
+# h1.launch_data_spike(t1)
+# h1.launch_data_spike(t1)
+# print(h1)
+# h1.extract_data_spike(t1)
 # print(h1)
