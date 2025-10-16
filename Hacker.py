@@ -42,14 +42,28 @@ class Hacker:
             print(f"{self.__name} does not have CryptoToken to acquire a {rig_name}")
 
     def add_trace(self, amount):
-        if amount <= 0 >= 10:
+        if amount <= 0  or amount > 10:
             print(f"{self.__name} needs to put postive number and until 10 in order to add trace")
+            return
 
         self.__trace_level += amount
         print(f"{self.__name} traced increased to  level: {str(self.__trace_level)}")
 
         if self.is_exposed():
             print(f"{self.__name} has exposed. Some actions may be blocked until it is reduced")
+
+    def reduce_trace(self, amount):
+        if amount <=0  or amount > 10:
+            print(f"{self.__name} needs to put postive number and until 10 in order to add trace")
+            return
+
+        self.__trace_level -= amount
+        if self.__trace_level < 0:
+            self.__trace_level = 0
+        print(f"{self.__name} traced decreased to  level: {str(self.__trace_level)}")
+
+        if not self.is_exposed():
+            print(f"{self.__name} is no longer exposed")
 
     def __str__(self):
         invetory_item = []
@@ -60,12 +74,14 @@ class Hacker:
         if self.__rig != False:
             rig_name = self.__rig.get_name()
 
-        return f"{self.__name} | Rig: {rig_name} | Inventory: {invetory_item}"
-
+        return f"{self.__name} | Rig: {rig_name} | Trace Level: {self.__trace_level} | Inventory: {invetory_item}"
 
 
 # h1 = Hacker("TestHacker")
 # print(h1)
 # h1.add_trace(2)
 # h1.add_trace(5)
+# print(h1)
+# h1.reduce_trace(4)
+# h1.reduce_trace(22)
 # print(h1)
