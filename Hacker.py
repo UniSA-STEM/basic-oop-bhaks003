@@ -142,10 +142,25 @@ class Hacker:
             if item.get_name() == "Security Chip" and item.get_encrypted() == False:
                 return True
             if self.__rig != False:
-                for item in self.rig.get_storage():
+                for item in self.__rig.get_storage():
                     if item.get_name() == "Security Chip" and item.get_encrypted() == False:
                         return True
             return False
+
+    def encrpyt_inventory(self, asset_name):
+        for item in self.__inventory:
+            if item.get_name() == asset_name:
+                if not self.has_security_chip():
+                    print(f"Encryption rquires a security chip in order to encrypt.")
+                    return False
+                if item.get_encrypted():
+                    print(f"{asset_name} us already encrypted.")
+                    return False
+                item.encrypt()
+                print(f"{asset_name} in inventory is encrypted.")
+                return True
+        print(f"{asset_name} found in inventory.")
+        return False
 
     def __str__(self):
         invetory_item = []
@@ -175,3 +190,4 @@ class Hacker:
 # print(h1)
 # h1.extract_data_spike(t1)
 # print(h1)
+# h1.encrpyt_inventory("Data Spike")
