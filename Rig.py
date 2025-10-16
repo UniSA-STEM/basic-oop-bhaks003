@@ -41,7 +41,7 @@ class Rig:
         print(f"{self.__name} has taken a hit. Current damage: {self.__damage}")
 
         if self.__damage >= 2 + self.__upgrade_level:
-            self.broken = True
+            self.__broken = True
             print(f"{self.__name} has been broken. It needs a repair.")
 
     def generate_asset(self):
@@ -62,36 +62,49 @@ class Rig:
         for asset in self.__storage:
             if asset.get_name()  ==  asset_name.get_name():
                 if asset.get_encrypted():
-                    print(f"{asset.name} is encrypted. you to decrypt in order to transfer it.")
+                    print(f"{asset.get_name()} is encrypted. you to decrypt in order to transfer it.")
                 else:
                     self.__storage.remove(asset)
                     print(f"Releasing {asset.get_name()}. from {self.__name}")
                 return
         print(f"{asset_name} is not in storage of  {self.__name}.")
 
+    def get_condition(self):
+        if self.__broken:
+            print(f"Broken  (Level {self.__upgrade_level})")
+        else:
+            print(f"Pristine (Level {self.__upgrade_level})")
 
-r1 = Rig("Rig test")
-a1 = asset("Security Chip", "Used to encrypt or decrypt assets", True)
-a2 = asset("Hardware Patch", "Used to upgrade rigs")
-r1.repair()
-r1.upgrade()
-r1.take_hit()
-r1.take_hit()
-r1.take_hit()
-r1.take_hit()
-r1.repair()
-r1.take_hit()
-r1.generate_asset()
-r1.generate_asset()
-for item in r1.get_storage():
-    print(item)
-print(80*"#")
-r1.store_asset(a1)
-r1.store_asset(a2)
-for item in r1.get_storage():
-    print(item)
-print(80*"#")
-r1.release_asset(a1)
-r1.release_asset(a2)
-for item in r1.get_storage():
-    print(item)
+
+# r1 = Rig("Rig test")
+# a1 = asset("Security Chip", "Used to encrypt or decrypt assets", True)
+# a2 = asset("Hardware Patch", "Used to upgrade rigs")
+# r1.repair()
+# r1.upgrade()
+# r1.take_hit()
+# r1.take_hit()
+# r1.take_hit()
+# r1.take_hit()
+# r1.repair()
+# r1.take_hit()
+# r1.generate_asset()
+# r1.generate_asset()
+# for item in r1.get_storage():
+#     print(item)
+# print(80*"#")
+# r1.store_asset(a1)
+# r1.store_asset(a2)
+# for item in r1.get_storage():
+#     print(item)
+# print(80*"#")
+# r1.release_asset(a1)
+# r1.release_asset(a2)
+# for item in r1.get_storage():
+#     print(item)
+# r1.get_condition()
+# r1.take_hit()
+# r1.take_hit()
+# r1.get_condition()
+# r1.take_hit()
+# r1.repair()
+# r1.get_condition()
