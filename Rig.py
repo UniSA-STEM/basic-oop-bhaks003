@@ -50,16 +50,30 @@ class Rig:
         self.__storage.append(new_asset)
         print(f"{self.__name} has generated a new asset {new_asset}.")
 
-# r1 = Rig("Rig test")
-# r1.repair()
-# r1.upgrade()
-# r1.take_hit()
-# r1.take_hit()
-# r1.take_hit()
-# r1.take_hit()
-# r1.repair()
-# r1.take_hit()
-# r1.generate_asset()
-# r1.generate_asset()
-# for item in r1.get_storage():
-#     print(item)
+    def store_asset(self, asset_name):
+        if asset_name.get_encrypted():
+            print(f"{asset_name} is encrypted and cannot be stored until decrypted.")
+        else:
+            self.__storage.append(asset_name)
+            print(f"{asset_name} is stored in {self.__name}")
+
+r1 = Rig("Rig test")
+a1 = asset("Security Chip", "Used to encrypt or decrypt assets", True)
+a2 = asset("Hardware Patch", "Used to upgrade rigs")
+r1.repair()
+r1.upgrade()
+r1.take_hit()
+r1.take_hit()
+r1.take_hit()
+r1.take_hit()
+r1.repair()
+r1.take_hit()
+r1.generate_asset()
+r1.generate_asset()
+for item in r1.get_storage():
+    print(item)
+print(80*"#")
+r1.store_asset(a1)
+r1.store_asset(a2)
+for item in r1.get_storage():
+    print(item)
