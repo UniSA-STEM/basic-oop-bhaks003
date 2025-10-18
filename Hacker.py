@@ -196,6 +196,25 @@ class Hacker:
         print(f"{asset_name} is not found in rig.")
         return False
 
+    def decrypt_rig(self, asset_name):
+        if self.__rig == False:
+            print(f"{self.__name} does not have a rig to decrypt.")
+            return False
+        storage = self.__rig.get_storage()
+        for item in storage:
+            if item.get_name() == asset_name:
+                if not self.has_security_chip():
+                    print(f"Decryption rquires a security chip in order to decrypt.")
+                    return False
+                if not item.get_encrypted():
+                    print(f"{asset_name} already decrypted.")
+                    return False
+                item.decrypt()
+                print(f"{asset_name} in rig is decrypted.")
+                return True
+        print(f"{asset_name} is not found in rig.")
+        return False
+
     def __str__(self):
         invetory_item = []
         for items in self.__inventory:
@@ -227,3 +246,4 @@ class Hacker:
 # h1.encrypt_inventory("Data Spike")
 # h1.decrypt_inventory("Data Spike")
 # h1.encrypt_rig(t1)
+# h1.decrypt_rig(t1)
