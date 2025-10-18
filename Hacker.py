@@ -177,6 +177,25 @@ class Hacker:
         print(f"{asset_name} is not found in inventory.")
         return False
 
+    def encrypt_rig(self, asset_name):
+        if self.__rig == False:
+            print(f"{self.__name} does not have a rig to encrypt.")
+            return False
+        storage = self.__rig.get_storage()
+        for asset in storage:
+            if asset.get_name() == asset_name:
+                if not self.has_security_chip():
+                    print(f"Encryption rquires a security chip in order to encrypt.")
+                    return False
+                if asset.get_encrypted():
+                    print(f"{asset_name}  already encrypted.")
+                    return False
+                asset.encrypt()
+                print(f"{asset_name} in rig is encrypted.")
+                return True
+        print(f"{asset_name} is not found in rig.")
+        return False
+
     def __str__(self):
         invetory_item = []
         for items in self.__inventory:
@@ -189,21 +208,22 @@ class Hacker:
         return f"{self.__name} | Rig: {rig_name} | Trace Level: {self.__trace_level} | Inventory: {invetory_item}"
 
 
-h1 = Hacker("TestHacker")
-t1 = Rig("Target 1")
-print(h1)
-h1.add_trace(2)
-h1.add_trace(5)
-print(h1)
-h1.reduce_trace(4)
-h1.reduce_trace(22)
-print(h1)
-h1.acquire_rig("NoRigggg")
-print(h1)
-h1.launch_data_spike(t1)
-h1.launch_data_spike(t1)
-print(h1)
-h1.extract_data_spike(t1)
-print(h1)
-h1.encrypt_inventory("Data Spike")
-h1.decrypt_inventory_asset("Data Spike")
+# h1 = Hacker("TestHacker")
+# t1 = Rig("Target 1")
+# print(h1)
+# h1.add_trace(2)
+# h1.add_trace(5)
+# print(h1)
+# h1.reduce_trace(4)
+# h1.reduce_trace(22)
+# print(h1)
+# h1.acquire_rig("NoRigggg")
+# print(h1)
+# h1.launch_data_spike(t1)
+# h1.launch_data_spike(t1)
+# print(h1)
+# h1.extract_data_spike(t1)
+# print(h1)
+# h1.encrypt_inventory("Data Spike")
+# h1.decrypt_inventory("Data Spike")
+# h1.encrypt_rig(t1)
