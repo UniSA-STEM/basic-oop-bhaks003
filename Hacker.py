@@ -215,6 +215,20 @@ class Hacker:
         print(f"{asset_name} is not found in rig.")
         return False
 
+    def upgrade_rig(self):
+        if self.__rig == False:
+            print(f"{self.__name} does not have a rig to upgrade.")
+            return False
+
+        for asset in self.__inventory:
+            if asset.get_name() == "Hardware Patch" and asset.get_encrypted() == False:
+                self.__inventory.remove(asset)
+                self.__rig.upgrade()
+                print(f"{self.__name} has upgraded {self.__rig.get_name()} successfully.")
+                return True
+        print(f"{self.__name} doesn't have a Hardware patch to uprage the rig")
+
+
     def __str__(self):
         invetory_item = []
         for items in self.__inventory:
