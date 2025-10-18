@@ -237,6 +237,24 @@ class Hacker:
         print(f"{asset_name} not in inventory.")
         return False
 
+    def store_asset(self, asset_name):
+        if self.__rig == False:
+            print(f"{self.__name} does not have a rig to store.")
+            return False
+        if asset_name is not True:
+            for item in list(self.__inventory):
+                if item.get_name() == asset_name:
+                    if item.get_encrypted():
+                        print(f"{asset_name} is encrypted and cannot be store until decrypted.")
+                        return False
+                    self.__rig.store_asset(item)
+                    self.__inventory.remove(item)
+                    print(f"{self.__name} has store {asset_name} in {self.__rig.get_name()}.")
+                    return True
+            print(f"{asset_name} not in inventory.")
+            return False
+
+
     def __str__(self):
         invetory_item = []
         for items in self.__inventory:
@@ -248,7 +266,7 @@ class Hacker:
 
         return f"{self.__name} | Rig: {rig_name} | Trace Level: {self.__trace_level} | Inventory: {invetory_item}"
 
-
+#
 # h1 = Hacker("TestHacker")
 # t1 = Rig("Target 1")
 # print(h1)
@@ -269,3 +287,5 @@ class Hacker:
 # h1.decrypt_inventory("Data Spike")
 # h1.encrypt_rig(t1)
 # h1.decrypt_rig(t1)
+# h1.scan_inventory("Data Spike")
+# h1.store_asset("Data Spike")
