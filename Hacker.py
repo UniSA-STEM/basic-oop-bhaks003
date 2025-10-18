@@ -228,6 +228,14 @@ class Hacker:
                 return True
         print(f"{self.__name} doesn't have a Hardware patch to uprage the rig")
 
+    def scan_inventory(self, asset_name):
+        for item in self.__inventory:
+            if item.get_name() == asset_name:
+                self.__inventory.remove(item)
+                print(f"{self.__name} has removed {item.get_name()} from inventory.")
+                return item
+        print(f"{asset_name} not in inventory.")
+        return False
 
     def __str__(self):
         invetory_item = []
