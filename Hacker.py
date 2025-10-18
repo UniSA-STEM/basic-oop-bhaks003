@@ -147,7 +147,7 @@ class Hacker:
                         return True
             return False
 
-    def encrpyt_inventory(self, asset_name):
+    def encrypt_inventory(self, asset_name):
         for item in self.__inventory:
             if item.get_name() == asset_name:
                 if not self.has_security_chip():
@@ -162,6 +162,21 @@ class Hacker:
         print(f"{asset_name} found in inventory.")
         return False
 
+    def decrypt_inventory(self, asset_name):
+        for item in self.__inventory:
+            if item.get_name() == asset_name:
+                if not self.has_security_chip():
+                    print(f"Decryption rquires a security chip in order to decrypt.")
+                    return False
+                if not item.get_encrypted():
+                    print(f"{asset_name} us already decrypted.")
+                    return False
+                item.decrypt()
+                print(f"{asset_name} in inventory is decrypted.")
+                return True
+        print(f"{asset_name} is not found in inventory.")
+        return False
+
     def __str__(self):
         invetory_item = []
         for items in self.__inventory:
@@ -174,20 +189,21 @@ class Hacker:
         return f"{self.__name} | Rig: {rig_name} | Trace Level: {self.__trace_level} | Inventory: {invetory_item}"
 
 
-# h1 = Hacker("TestHacker")
-# t1 = Rig("Target 1")
-# print(h1)
-# h1.add_trace(2)
-# h1.add_trace(5)
-# print(h1)
-# h1.reduce_trace(4)
-# h1.reduce_trace(22)
-# print(h1)
-# h1.acquire_rig("NoRigggg")
-# print(h1)
-# h1.launch_data_spike(t1)
-# h1.launch_data_spike(t1)
-# print(h1)
-# h1.extract_data_spike(t1)
-# print(h1)
-# h1.encrpyt_inventory("Data Spike")
+h1 = Hacker("TestHacker")
+t1 = Rig("Target 1")
+print(h1)
+h1.add_trace(2)
+h1.add_trace(5)
+print(h1)
+h1.reduce_trace(4)
+h1.reduce_trace(22)
+print(h1)
+h1.acquire_rig("NoRigggg")
+print(h1)
+h1.launch_data_spike(t1)
+h1.launch_data_spike(t1)
+print(h1)
+h1.extract_data_spike(t1)
+print(h1)
+h1.encrypt_inventory("Data Spike")
+h1.decrypt_inventory_asset("Data Spike")
