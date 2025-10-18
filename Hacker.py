@@ -137,6 +137,7 @@ class Hacker:
 
         print(f"{self.__name} extracted {moved}  decrypted assets from {target_rig.get_name()}")
 
+    # this method is developed if check in  inventory if it has a security chip
     def has_security_chip(self):
         for item in self.__inventory:
             if item.get_name() == "Security Chip" and item.get_encrypted() == False:
@@ -147,6 +148,7 @@ class Hacker:
                         return True
             return False
 
+    # encrypy_inventory method to encrypt the asset inside the inventory in order to secure the asset
     def encrypt_inventory(self, asset_name):
         for item in self.__inventory:
             if item.get_name() == asset_name:
@@ -162,6 +164,7 @@ class Hacker:
         print(f"{asset_name} found in inventory.")
         return False
 
+    # this methods come in hand when user's want to trasnfer the asset as transferring only works it is encrypted
     def decrypt_inventory(self, asset_name):
         for item in self.__inventory:
             if item.get_name() == asset_name:
@@ -177,6 +180,7 @@ class Hacker:
         print(f"{asset_name} is not found in inventory.")
         return False
 
+    # this is will encrypt the asset inside the rig and needs security chip to encrypt
     def encrypt_rig(self, asset_name):
         if self.__rig == False:
             print(f"{self.__name} does not have a rig to encrypt.")
@@ -196,6 +200,7 @@ class Hacker:
         print(f"{asset_name} is not found in rig.")
         return False
 
+    # this is will decrypt the asset inside the rig but it should have a secuirty chip
     def decrypt_rig(self, asset_name):
         if self.__rig == False:
             print(f"{self.__name} does not have a rig to decrypt.")
@@ -215,6 +220,7 @@ class Hacker:
         print(f"{asset_name} is not found in rig.")
         return False
 
+    # this will upgrade the rig it is has a hardware patch otherwise it will decline
     def upgrade_rig(self):
         if self.__rig == False:
             print(f"{self.__name} does not have a rig to upgrade.")
@@ -228,6 +234,7 @@ class Hacker:
                 return True
         print(f"{self.__name} doesn't have a Hardware patch to uprage the rig")
 
+    # this is scan the asset name in inventory if found it will remove from the inventory
     def scan_inventory(self, asset_name):
         for item in self.__inventory:
             if item.get_name() == asset_name:
@@ -236,6 +243,7 @@ class Hacker:
                 return item
         print(f"{asset_name} not in inventory.")
         return False
+
 
     def store_asset(self, asset_name):
         if self.__rig == False:
@@ -254,6 +262,7 @@ class Hacker:
             print(f"{asset_name} not in inventory.")
             return False
 
+    # this is method in order to transfer between the storage and inventory well this one specifically removes the asset from storage of rig and add it into the hacker's inventory
     def retrieve_asset(self, asset_name):
         if self.__rig == False:
             print(f"{self.__name} does not have a rig to retrieve.")
