@@ -83,3 +83,9 @@ def test_acquire_and_upgrade_rig():
     print("After Extracting", hacker_1)
     print("After Extracting", Rig_1)
 
+    # attacking while high trace level
+    print_head("Attacking while trace level is high")
+    for level in range(10):
+        hacker_1.add_trace(1)
+    hacker_1.launch_data_spike(Rig_1)
+    print(hacker_1)
