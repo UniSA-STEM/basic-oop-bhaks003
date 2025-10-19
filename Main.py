@@ -18,3 +18,17 @@ def print_head(title):
     print(20*"-",title,20*"-")
     print(85*'-')
 
+def test_acquire_and_upgrade_rig():
+    print_head("Creating Hackers, rigs and few assets")
+    hacker_1 = Hacker("JackSparrow")
+    hacker_2 = Hacker("Neon")
+
+    hacker_1.acquire_rig("TheBlackPearl")
+    hacker_2.acquire_rig("TheBlackSuit")
+
+    Rig_1 =  Rig("TheBlackPearl")
+    Rig_2 = Rig("TheBlackSuit")
+
+    print(hacker_1)
+    print(hacker_2)
+    print(Rig_1)
