@@ -66,3 +66,20 @@ def test_acquire_and_upgrade_rig():
     print("Before Repair", Rig_2)
     Rig_2.repair()
     print("After Repair", Rig_2)
+
+
+    # battle and trace extraction
+    print_head("Battling, trae level and extraction ")
+    hacker_1.launch_data_spike(Rig_1)
+    hacker_1.add_trace(2)
+
+    # breaking the target so that exrtaction can be done
+    Rig_1.take_hit() #might be wondering why even after attacking must making sure even it add and totals all the hit
+    print("before Launching", hacker_1)
+
+
+    # extraction ofn asset from the target if broken but attacker should have a removable drive in order to do the extraction
+    hacker_1.extract_data_spike(Rig_1)
+    print("After Extracting", hacker_1)
+    print("After Extracting", Rig_1)
+
