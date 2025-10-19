@@ -89,3 +89,16 @@ def test_acquire_and_upgrade_rig():
         hacker_1.add_trace(1)
     hacker_1.launch_data_spike(Rig_1)
     print(hacker_1)
+
+    # upgrading without a rig
+    print_head("Testing to upradge without a rig")
+    no_rig = Hacker("RigNOooo")
+    no_rig.upgrade_rig()
+    print(no_rig)
+
+    # final updates
+    print_head("Final States of each")
+    print(hacker_1)
+    print(hacker_2)
+    print(Rig_2)
+    print(Rig_1)
