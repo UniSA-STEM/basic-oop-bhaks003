@@ -63,7 +63,7 @@ class Rig:
 
     # in this methof by the the help of random choice it will choose a asset from the given asset desc and will add in to storage as well
     def generate_asset(self):
-        assets_list = [asset("CrytoToken", "Used to acquire or repair ship"), asset("Data Spike", "Used in battles."), asset("Removable Drive", "Found in rigs and used for extraction."), asset("Security Chip", "Used to encrypt or decrypt assets."), asset("Hardware Patch", "Used to upgrade rigs.")]
+        assets_list = [asset("CryptoToken", "Used to acquire or repair ship"), asset("Data Spike", "Used in battles."), asset("Removable Drive", "Found in rigs and used for extraction."), asset("Security Chip", "Used to encrypt or decrypt assets."), asset("Hardware Patch", "Used to upgrade rigs.")]
         new_asset = random.choice(assets_list)
         self.__storage.append(new_asset)
         print(f"{self.__name} has generated a new asset {new_asset}.")
