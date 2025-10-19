@@ -6,7 +6,7 @@ ID: 110429045
 Username: bhaks003
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
-
+from traceback import print_tb
 
 from Hacker import Hacker
 from Asset import asset
@@ -54,3 +54,15 @@ def test_acquire_and_upgrade_rig():
     hacker_1.store_asset("Data Spike")
     hacker_1.encrypt_rig("Data Spike")
     hacker_1.decrypt_rig("Data Spike")
+
+    # upgrading the rig without the Hardware pathc
+    print_head("Uprading the RIG (no Hardware Patch)")
+    hacker_1.upgrade_rig() #missing hardware patch message would appear
+
+    # demonstration on repair would work
+    print_head("Repair Demo (rig will take some hit and then get repaired as well)")
+    Rig_2.take_hit()
+    Rig_2.take_hit()
+    print("Before Repair", Rig_2)
+    Rig_2.repair()
+    print("After Repair", Rig_2)
