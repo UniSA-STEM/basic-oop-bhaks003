@@ -1,7 +1,6 @@
 """
 File: main.py
 Description: Instantiating Hacker, Rig, Asset class and testing functionality which includes demonstration of upgrading, repair, extracting, encrypting , decrypting, transferring and many more.
-Author: Krish Sanjaybhai
 Author: Krish Sanjaybhai Bhadani
 ID: 110429045
 Username: bhaks003
