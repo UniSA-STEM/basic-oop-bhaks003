@@ -289,28 +289,3 @@ class Hacker:
             rig_name = self.__rig.get_name()
 
         return f"{self.__name} | Rig: {rig_name} | Trace Level: {self.__trace_level} | Inventory: {invetory_item}"
-
-
-# h1 = Hacker("TestHacker")
-# t1 = Rig("Target 1")
-# print(h1)
-# h1.add_trace(2)
-# h1.add_trace(5)
-# print(h1)
-# h1.reduce_trace(4)
-# h1.reduce_trace(22)
-# print(h1)
-# h1.acquire_rig("NoRigggg")
-# print(h1)
-# h1.launch_data_spike(t1)
-# h1.launch_data_spike(t1)
-# print(h1)
-# h1.extract_data_spike(t1)
-# print(h1)
-# h1.encrypt_inventory("Data Spike")
-# h1.decrypt_inventory("Data Spike")
-# h1.encrypt_rig(t1)
-# h1.decrypt_rig(t1)
-# h1.scan_inventory("Data Spike")
-# h1.store_asset("Data Spike")
-# h1.retrieve_asset("Data Spike")

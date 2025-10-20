@@ -50,11 +50,3 @@ class asset:
             return f"{self.__name}: {self.__description} [Encrypted]"
         else:
             return f"{self.__name}: {self.__description}"
-
-
-# a1 = asset("CrytoToken", "Used to acquire or repair rigs. ")
-# print(a1)
-# a1.encrypt()
-# print(a1)
-# a1.decrypt()
-# print(a1)
